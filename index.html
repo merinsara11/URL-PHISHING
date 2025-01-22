@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Phishing Prediction</title>
+    
+    <!-- Link to Bootstrap 4 for responsive design -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS for better styling -->
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-control {
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        .btn {
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .prediction-result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .prediction-result h4 {
+            color: #28a745;
+        }
+        .prediction-result p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .header-text {
+            text-align: center;
+            color: #007bff;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        .footer-text {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 40px;
+            color: #555;
+        }
+        .footer-text a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-text">
+            URL Phishing Prediction
+        </div>
+
+        <!-- Prediction Form -->
+        <form method="POST">
+
+            <div class="form-group">
+                <label for="card_rem">Website Name</label>
+                <input type="text"  class="form-control" id="web" name="web" required>
+            </div>
+            <div class="form-group">
+                <label for="card_rem">Card Rem</label>
+                <input type="number" step="any" class="form-control" id="card_rem" name="card_rem" required>
+            </div>
+            <div class="form-group">
+                <label for="ratio_Rrem">Ratio Rrem</label>
+                <input type="number" step="any" class="form-control" id="ratio_Rrem" name="ratio_Rrem" required>
+            </div>
+            <div class="form-group">
+                <label for="ratio_Arem">Ratio Arem</label>
+                <input type="number" step="any" class="form-control" id="ratio_Arem" name="ratio_Arem" required>
+            </div>
+            <div class="form-group">
+                <label for="jaccard_RR">Jaccard RR</label>
+                <input type="number" step="any" class="form-control" id="jaccard_RR" name="jaccard_RR" required>
+            </div>
+            <div class="form-group">
+                <label for="jaccard_RA">Jaccard RA</label>
+                <input type="number" step="any" class="form-control" id="jaccard_RA" name="jaccard_RA" required>
+            </div>
+            <div class="form-group">
+                <label for="jaccard_AR">Jaccard AR</label>
+                <input type="number" step="any" class="form-control" id="jaccard_AR" name="jaccard_AR" required>
+            </div>
+            <div class="form-group">
+                <label for="jaccard_AA">Jaccard AA</label>
+                <input type="number" step="any" class="form-control" id="jaccard_AA" name="jaccard_AA" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Get Prediction</button>
+        </form>
+
+        {% if prediction is not none %}
+        <!-- Display Prediction Result -->
+        <div class="prediction-result">
+            <h4>Prediction Result:</h4>
+            <p>{{ 'Phishing' if prediction == 1 else 'Safe' }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Footer Text -->
+      
+    </div>
+
+    <!-- JS Scripts for Bootstrap functionality -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
